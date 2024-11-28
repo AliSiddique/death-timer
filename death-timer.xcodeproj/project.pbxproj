@@ -6,14 +6,77 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CC9603162CE7D3B400C4D774 /* SuperwallKit in Frameworks */ = {isa = PBXBuildFile; productRef = CC9603152CE7D3B400C4D774 /* SuperwallKit */; };
+		CCC461942CE4FAD900FC9116 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC461932CE4FAD800FC9116 /* WidgetKit.framework */; };
+		CCC461962CE4FAD900FC9116 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC461952CE4FAD900FC9116 /* SwiftUI.framework */; };
+		CCC461A12CE4FADB00FC9116 /* death-widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CCC461912CE4FAD800FC9116 /* death-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CCC4619F2CE4FADB00FC9116 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CCC336182CE3983D0008F2EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CCC461902CE4FAD800FC9116;
+			remoteInfo = "death-widgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CCC461A62CE4FADB00FC9116 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CCC461A12CE4FADB00FC9116 /* death-widgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		CC2F4A942CE635CF00DB5A69 /* death-widgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "death-widgetExtension.entitlements"; sourceTree = "<group>"; };
 		CCC336202CE3983D0008F2EB /* death-timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "death-timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCC461912CE4FAD800FC9116 /* death-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "death-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCC461932CE4FAD800FC9116 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CCC461952CE4FAD900FC9116 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CCC461A22CE4FADB00FC9116 /* Exceptions for "death-widget" folder in "death-widgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = CCC461902CE4FAD800FC9116 /* death-widgetExtension */;
+		};
+		CCE42A942CE69B5200954A6A /* Exceptions for "death-timer" folder in "death-widgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Item.swift,
+			);
+			target = CCC461902CE4FAD800FC9116 /* death-widgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CCC336222CE3983D0008F2EB /* death-timer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CCE42A942CE69B5200954A6A /* Exceptions for "death-timer" folder in "death-widgetExtension" target */,
+			);
 			path = "death-timer";
+			sourceTree = "<group>";
+		};
+		CCC461972CE4FAD900FC9116 /* death-widget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CCC461A22CE4FADB00FC9116 /* Exceptions for "death-widget" folder in "death-widgetExtension" target */,
+			);
+			path = "death-widget";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +86,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC9603162CE7D3B400C4D774 /* SuperwallKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCC4618E2CE4FAD800FC9116 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCC461962CE4FAD900FC9116 /* SwiftUI.framework in Frameworks */,
+				CCC461942CE4FAD900FC9116 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +105,10 @@
 		CCC336172CE3983D0008F2EB = {
 			isa = PBXGroup;
 			children = (
+				CC2F4A942CE635CF00DB5A69 /* death-widgetExtension.entitlements */,
 				CCC336222CE3983D0008F2EB /* death-timer */,
+				CCC461972CE4FAD900FC9116 /* death-widget */,
+				CCC461922CE4FAD800FC9116 /* Frameworks */,
 				CCC336212CE3983D0008F2EB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +117,18 @@
 			isa = PBXGroup;
 			children = (
 				CCC336202CE3983D0008F2EB /* death-timer.app */,
+				CCC461912CE4FAD800FC9116 /* death-widgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CCC461922CE4FAD800FC9116 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCC461932CE4FAD800FC9116 /* WidgetKit.framework */,
+				CCC461952CE4FAD900FC9116 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,20 +141,45 @@
 				CCC3361C2CE3983D0008F2EB /* Sources */,
 				CCC3361D2CE3983D0008F2EB /* Frameworks */,
 				CCC3361E2CE3983D0008F2EB /* Resources */,
+				CCC461A62CE4FADB00FC9116 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CCC461A02CE4FADB00FC9116 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				CCC336222CE3983D0008F2EB /* death-timer */,
 			);
 			name = "death-timer";
 			packageProductDependencies = (
+				CC9603152CE7D3B400C4D774 /* SuperwallKit */,
 			);
 			productName = "death-timer";
 			productReference = CCC336202CE3983D0008F2EB /* death-timer.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CCC461902CE4FAD800FC9116 /* death-widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCC461A32CE4FADB00FC9116 /* Build configuration list for PBXNativeTarget "death-widgetExtension" */;
+			buildPhases = (
+				CCC4618D2CE4FAD800FC9116 /* Sources */,
+				CCC4618E2CE4FAD800FC9116 /* Frameworks */,
+				CCC4618F2CE4FAD800FC9116 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CCC461972CE4FAD900FC9116 /* death-widget */,
+			);
+			name = "death-widgetExtension";
+			packageProductDependencies = (
+			);
+			productName = "death-widgetExtension";
+			productReference = CCC461912CE4FAD800FC9116 /* death-widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -83,6 +194,9 @@
 					CCC3361F2CE3983D0008F2EB = {
 						CreatedOnToolsVersion = 16.1;
 					};
+					CCC461902CE4FAD800FC9116 = {
+						CreatedOnToolsVersion = 16.1;
+					};
 				};
 			};
 			buildConfigurationList = CCC3361B2CE3983D0008F2EB /* Build configuration list for PBXProject "death-timer" */;
@@ -94,18 +208,29 @@
 			);
 			mainGroup = CCC336172CE3983D0008F2EB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CC9603142CE7D3B300C4D774 /* XCRemoteSwiftPackageReference "Superwall-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CCC336212CE3983D0008F2EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CCC3361F2CE3983D0008F2EB /* death-timer */,
+				CCC461902CE4FAD800FC9116 /* death-widgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CCC3361E2CE3983D0008F2EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CCC4618F2CE4FAD800FC9116 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +247,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CCC4618D2CE4FAD800FC9116 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CCC461A02CE4FADB00FC9116 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CCC461902CE4FAD800FC9116 /* death-widgetExtension */;
+			targetProxy = CCC4619F2CE4FADB00FC9116 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CCC3362E2CE3983F0008F2EB /* Debug */ = {
@@ -249,17 +389,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "death-timer/death-timer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"death-timer/Preview Content\"";
 				DEVELOPMENT_TEAM = P5AHP6SL3X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Death;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -267,6 +410,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.salinash.death-timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -278,17 +425,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "death-timer/death-timer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"death-timer/Preview Content\"";
 				DEVELOPMENT_TEAM = P5AHP6SL3X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Death;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,6 +446,74 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.salinash.death-timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CCC461A42CE4FADB00FC9116 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "death-widgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P5AHP6SL3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "death-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "death-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salinash.death-timer.death-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCC461A52CE4FADB00FC9116 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "death-widgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P5AHP6SL3X;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "death-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "death-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.salinash.death-timer.death-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -323,7 +541,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CCC461A32CE4FADB00FC9116 /* Build configuration list for PBXNativeTarget "death-widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCC461A42CE4FADB00FC9116 /* Debug */,
+				CCC461A52CE4FADB00FC9116 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CC9603142CE7D3B300C4D774 /* XCRemoteSwiftPackageReference "Superwall-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/superwall/Superwall-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.11.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC9603152CE7D3B400C4D774 /* SuperwallKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC9603142CE7D3B300C4D774 /* XCRemoteSwiftPackageReference "Superwall-iOS" */;
+			productName = SuperwallKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CCC336182CE3983D0008F2EB /* Project object */;
 }

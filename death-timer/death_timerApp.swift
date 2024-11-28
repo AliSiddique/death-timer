@@ -7,12 +7,12 @@
 
 import SwiftUI
 import SwiftData
-
+import SuperwallKit
 @main
 struct death_timerApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            UserData.self, BucketListItem.self, QuizResponse.self,Reflection.self,PhotoMemory.self,LifeLesson.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -22,10 +22,21 @@ struct death_timerApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    init(){
+        Superwall.configure(apiKey: "pk_6f6b842555f0097aba34422ade7932cdbf77cfeace53399f")
+    }
+    @AppStorage("isOnboarding") var isOnboarding: Bool = true
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           if isOnboarding {
+               OnboardingView()
+                   .preferredColorScheme(.dark)
+
+           } else {
+               WellbeingDashboardView()
+                   .preferredColorScheme(.dark)
+
+           }
         }
         .modelContainer(sharedModelContainer)
     }
