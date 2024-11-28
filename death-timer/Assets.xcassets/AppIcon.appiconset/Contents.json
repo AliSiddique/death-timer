@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "DALL·E 2024-11-12 21.44.45 - A minimalist logo for an app that calculates a user’s lifespan, with a yin-yang style split. One side represents heaven with light colours, soft cloud.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -12,6 +13,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "DALL·E 2024-11-12 21.44.45 - A minimalist logo for an app that calculates a user’s lifespan, with a yin-yang style split. One side represents heaven with light colours, soft cloud 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -23,6 +25,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "DALL·E 2024-11-12 21.44.45 - A minimalist logo for an app that calculates a user’s lifespan, with a yin-yang style split. One side represents heaven with light colours, soft cloud 2.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
