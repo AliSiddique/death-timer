@@ -103,6 +103,56 @@ class TimerModel: ObservableObject {
       
     }
 }
+struct AppAdvertisement: View {
+    let appName: String
+    let appDescription: String
+    let appStoreLink: URL
+    let iconName: String // Use SF Symbol or asset name
+    
+    var body: some View {
+        Link(destination: appStoreLink) {
+            HStack(spacing: 15) {
+                // App Icon
+                Image(iconName)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+                    .cornerRadius(10)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    // App Name
+                    Text(appName)
+                        .font(.headline)
+                        .foregroundColor(Color(hex: "#fbf8ee"))
+                    
+                    // App Description
+                    Text(appDescription)
+                        .font(.caption)
+                        .foregroundColor(Color(hex: "#fbf8ee").opacity(0.8))
+                        .lineLimit(2)
+                }
+                
+                Spacer()
+                
+                // Download button
+                Text("Get")
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(Color(hex: "#0d1824"))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color(hex: "#fbf8ee"))
+                    .cornerRadius(15)
+            }
+            .padding(15)
+            .background(Color(hex: "#fbf8ee").opacity(0.1))
+            .overlay(
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color(hex: "#fbf8ee").opacity(0.3), lineWidth: 1)
+            )
+            .cornerRadius(15)
+        }
+    }
+}
 
 import WidgetKit
 import SuperwallKit
@@ -110,116 +160,121 @@ import StoreKit
 
 struct WellbeingDashboardView: View {
     @Environment(\.modelContext) private var modelContext
-      @Query private var userData: [UserData]
-      @StateObject private var timerModel: TimerModel
-      @State private var showingDisplayOptions = false
-      @State private var showStatistics = false
-      @State private var showBucketList = false
-      @State private var showMemories = false
-      @Environment(\.requestReview) private var requestReview
-      @State private var selectedDate = Date()
-      
-      init() {
-          let userDataItem = UserData()
-          _timerModel = StateObject(wrappedValue: TimerModel(userData: userDataItem))
-      }
-      var body: some View {
-          NavigationStack {
-              ZStack {
-                  Color(hex: "#0d1824")
-                      .ignoresSafeArea()
-                  
-                  VStack {
-                      Spacer()
-                      
-                      // Main Timer Section
-                      VStack(spacing: 40) {
-                        Text(formatDate(userData.first?.predictedDeathDate ?? Date()))
-                          if userData.first?.timeDisplayMode == .split {
-                              LazyVGrid(columns: [
-                                  GridItem(.flexible()),
-                                  GridItem(.flexible())
-                              ], spacing: 30) {
-                                  MainTimeComponent(value: timerModel.timeComponents["years"] ?? 0, unit: "Years")
-                                  MainTimeComponent(value: timerModel.timeComponents["months"] ?? 0, unit: "Months")
-                                  MainTimeComponent(value: timerModel.timeComponents["days"] ?? 0, unit: "Days")
-                                  MainTimeComponent(value: timerModel.timeComponents["hours"] ?? 0, unit: "Hours")
-                                  MainTimeComponent(value: timerModel.timeComponents["minutes"] ?? 0, unit: "Minutes")
-                                  MainTimeComponent(value: timerModel.timeComponents["seconds"] ?? 0, unit: "Seconds")
-                              }
-                          } else {
-                              MainTimeComponent(
-                                  value: Int(timerModel.totalTime),
-                                  unit: userData.first?.timeDisplayMode.rawValue.capitalized ?? "Time"
-                              )
-                          }
-                          
-                          Button(action: {
-                              if timerModel.isTimerRunning {
-                                  timerModel.stopTimer()
-                              } else {
-                                  timerModel.startTimer()
-                              }
-                          }) {
-                              Text(timerModel.isTimerRunning ? "Stop Countdown" : "Start Countdown")
-                                  .font(.custom("BebasNeue", size: 24))
-                                  .foregroundColor(.white)
-                                  .frame(maxWidth: .infinity)
-                                  .padding()
-                                  .background(timerModel.isTimerRunning ? Color.red.opacity(0.3) : Color(hex:"#fbf8ee").opacity(0.3))
-                                  .clipShape(RoundedRectangle(cornerRadius: 40))
-                                  .overlay(
-                                      RoundedRectangle(cornerRadius: 40)
-                                          .stroke(timerModel.isTimerRunning ? Color.red : Color(hex:"#fbf8ee"), lineWidth: 2)
-                                  )
-                          }
-                      }
-                      .padding(.horizontal, 30)
-                      
-                      Spacer()
-                      
-                      // Bottom Action Buttons
-                      HStack(spacing: 40) {
-                          ActionButton(icon: "chart.bar.fill", action: { showStatistics = true })
-                          if Superwall.shared.subscriptionStatus == .inactive {
-                              ActionButton(icon: "gearshape.fill", action: { Superwall.shared.register(event: "paid") })
-                                  
-                          } else {
-                              ActionButton(icon: "gearshape.fill", action: { showingDisplayOptions = true })
-                          }
-                  
-                          ActionButton(icon: "list.bullet.clipboard", action: { showBucketList = true })
-                          ActionButton(icon: "photo.stack", action: { showMemories = true })
-                      }
-                      .padding(.bottom, 40)
-                  }
-                  .padding(.horizontal)
-              }
-          
-                .fullScreenCover(isPresented: $showingDisplayOptions) {
-                    DisplayOptionsView(userData: userData.first)
+    @Query private var userData: [UserData]
+    @StateObject private var timerModel: TimerModel
+    @State private var showingDisplayOptions = false
+    @State private var showStatistics = false
+    @State private var showBucketList = false
+    @State private var showMemories = false
+    @Environment(\.requestReview) private var requestReview
+    @State private var selectedDate = Date()
+    
+    // App advertisement properties
+    private let otherAppName = "Aure" // Replace with your app name
+    private let otherAppDescription = "Become free with aure" // Replace with your app description
+    private let otherAppIconName = "log" // Replace with your app icon asset name
+    private let otherAppStoreLink = URL(string: "https://apple.co/3R2r3uo")! // Replace with your App Store link
+    
+    init() {
+        let userDataItem = UserData()
+        _timerModel = StateObject(wrappedValue: TimerModel(userData: userDataItem))
+    }
+    
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                Color(hex: "#0d1824")
+                    .ignoresSafeArea()
+                
+                VStack {
+                    // App Advertisement Banner
+                    AppAdvertisement(
+                        appName: otherAppName,
+                        appDescription: otherAppDescription,
+                        appStoreLink: otherAppStoreLink,
+                        iconName: otherAppIconName
+                    )
+                    .padding(.horizontal)
+                    .padding(.top)
+                    
+                    Spacer()
+                    
+                    // Main Timer Section
+                    VStack(spacing: 40) {
+                        if userData.first?.timeDisplayMode == .split {
+                            LazyVGrid(columns: [
+                                GridItem(.flexible()),
+                                GridItem(.flexible())
+                            ], spacing: 30) {
+                                MainTimeComponent(value: timerModel.timeComponents["years"] ?? 0, unit: "Years")
+                                MainTimeComponent(value: timerModel.timeComponents["months"] ?? 0, unit: "Months")
+                                MainTimeComponent(value: timerModel.timeComponents["days"] ?? 0, unit: "Days")
+                                MainTimeComponent(value: timerModel.timeComponents["hours"] ?? 0, unit: "Hours")
+                                MainTimeComponent(value: timerModel.timeComponents["minutes"] ?? 0, unit: "Minutes")
+                                MainTimeComponent(value: timerModel.timeComponents["seconds"] ?? 0, unit: "Seconds")
+                            }
+                        } else {
+                            MainTimeComponent(
+                                value: Int(timerModel.totalTime),
+                                unit: userData.first?.timeDisplayMode.rawValue.capitalized ?? "Time"
+                            )
+                        }
+                        
+                        Button(action: {
+                            if timerModel.isTimerRunning {
+                                timerModel.stopTimer()
+                            } else {
+                                timerModel.startTimer()
+                            }
+                        }) {
+                            Text(timerModel.isTimerRunning ? "Stop Countdown" : "Start Countdown")
+                                .font(.custom("BebasNeue", size: 24))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(timerModel.isTimerRunning ? Color.red.opacity(0.3) : Color(hex:"#fbf8ee").opacity(0.3))
+                                .clipShape(RoundedRectangle(cornerRadius: 40))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 40)
+                                        .stroke(timerModel.isTimerRunning ? Color.red : Color(hex:"#fbf8ee"), lineWidth: 2)
+                                )
+                        }
+                    }
+                    .padding(.horizontal, 30)
+                    
+                    Spacer()
+                    
+                    // Bottom Action Buttons
+                    HStack(spacing: 40) {
+                        ActionButton(icon: "chart.bar.fill", action: { showStatistics = true })
+                        ActionButton(icon: "gearshape.fill", action: { showingDisplayOptions = true })
+                        ActionButton(icon: "list.bullet.clipboard", action: { showBucketList = true })
+                        ActionButton(icon: "photo.stack", action: { showMemories = true })
+                    }
+                    .padding(.bottom, 40)
                 }
-              .fullScreenCover(isPresented: $showStatistics) {
-                    LifeVisualizationView()
-                }
-              .fullScreenCover(isPresented: $showBucketList) {
-                    BucketListItemView()
-                }
-                .fullScreenCover(isPresented: $showMemories) {
-                    PhotoMemoryView()
-                }
-              
-           
-          }
-          .onAppear(perform: initializeUserDataIfNeeded)
-          .onAppear {
+                .padding(.horizontal)
+            }
+            
+            .fullScreenCover(isPresented: $showingDisplayOptions) {
+                DisplayOptionsView(userData: userData.first)
+            }
+            .fullScreenCover(isPresented: $showStatistics) {
+                LifeVisualizationView()
+            }
+            .fullScreenCover(isPresented: $showBucketList) {
+                BucketListItemView()
+            }
+            .fullScreenCover(isPresented: $showMemories) {
+                PhotoMemoryView()
+            }
+        }
+        .onAppear(perform: initializeUserDataIfNeeded)
+        .onAppear {
             requestReview()
-              Superwall.shared.register(event: "campaign_trigger")
-          }
-          .preferredColorScheme(.dark)
-      }
-      
- 
+        }
+        .preferredColorScheme(.dark)
+    }
     
     private func initializeUserDataIfNeeded() {
         if userData.isEmpty {
@@ -277,9 +332,6 @@ struct WellbeingDashboardView: View {
         formatter.timeStyle = .short
         return formatter.string(from: date)
     }
-}
-#Preview{
-    WellbeingDashboardView()
 }
 struct MainTimeComponent: View {
     let value: Int

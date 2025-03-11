@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "DALL·E 2024-12-09 22.06.35 - A minimalist logo for a Stoicism app. The logo features a sleek and modern design with the primary colour being  003c7d (a deep blue) and white as an .png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
